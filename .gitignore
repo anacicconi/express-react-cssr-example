@@ -2,3 +2,4 @@
 node_modules
 dist
 src/server/webpack-assets.json
+package-lock.json
