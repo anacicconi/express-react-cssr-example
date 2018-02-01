@@ -1,4 +1,4 @@
 .idea
 node_modules
 dist
-server/webpack-assets.json
+src/server/webpack-assets.json
