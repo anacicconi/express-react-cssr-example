@@ -1,0 +1,79 @@
+{
+  "name": "scsr-react",
+  "version": "1.0.0",
+  "description": "A server and client side rendering app using ReactJS",
+  "scripts": {
+    "client:dev:build": "cross-env NODE_ENV=dev webpack --colors --config webpack.client.config.js",
+    "client:prod:build": "webpack --colors --config webpack.client.config.js",
+    "server:dev:build": "cross-env NODE_ENV=dev webpack --colors --config webpack.server.config.js",
+    "server:prod:build": "webpack --colors --config webpack.server.config.js",
+    "dev:launch": "nodemon dist/server.js",
+    "prod:launch": "pm2 start dist/server.js",
+    "dev:start": "npm-run-all --parallel client:dev:build server:dev:build dev:launch",
+    "prod:start": "npm run client:prod:build && npm run server:prod:build && npm run prod:launch",
+    "test-jest": "jest --no-cache"
+  },
+  "author": "Ana Luiza Cicconi",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.2",
+    "fetch-mock": "^6.0.0",
+    "npm": "^5.6.0",
+    "oauth": "^0.9.15",
+    "pm2": "^2.9.3",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2"
+  },
+  "devDependencies": {
+    "assets-webpack-plugin": "^3.5.1",
+    "autoprefixer": "^7.2.5",
+    "babel-cli": "^6.26.0",
+    "babel-jest": "^22.1.0",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "copy-webpack-plugin": "^4.3.1",
+    "cross-env": "^5.1.3",
+    "css-loader": "^0.28.9",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "jest": "^22.1.4",
+    "jest-cli": "^22.1.4",
+    "module-resolver": "^1.0.0",
+    "nodemon": "^1.14.11",
+    "npm-run-all": "^4.1.2",
+    "path": "^0.12.7",
+    "postcss-loader": "^2.0.10",
+    "request": "^2.83.0",
+    "style-loader": "^0.19.1",
+    "uglifyjs-webpack-plugin": "^1.1.6",
+    "universal-react-logger": "^1.0.6",
+    "webpack": "^3.10.0",
+    "webpack-merge": "^4.1.1",
+    "webpack-node-externals": "^1.6.0"
+  },
+  "jest": {
+    "verbose": true,
+    "collectCoverageFrom": [
+      "**/*.{js,jsx}",
+      "!**/node_modules/**"
+    ],
+    "cacheDirectory": "<rootDir>/__tests__/jest-cache",
+    "coverageDirectory": "<rootDir>/__tests__/jest-coverage",
+    "transform": {
+      "^.+\\.(js|jsx)$": "babel-jest"
+    },
+    "unmockedModulePathPatterns": [
+      "<rootDir>/node_modules/react",
+      "<rootDir>/node_modules/react-dom",
+      "<rootDir>/node_modules/fbjs"
+    ],
+    "moduleNameMapper": {
+      "^server(.*)$": "<rootDir>/src/server$1",
+      "^client(.*)$": "<rootDir>/src/client$1",
+      "^shared(.*)$": "<rootDir>/src/shared$1"
+    }
+  }
+}
