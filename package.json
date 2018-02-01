@@ -1,5 +1,5 @@
 {
-  "name": "scsr-react",
+  "name": "cssr-react",
   "version": "1.0.0",
   "description": "A server and client side rendering app using ReactJS",
   "scripts": {
